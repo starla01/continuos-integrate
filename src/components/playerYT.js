@@ -20,9 +20,7 @@ class PlayerYT extends Component {
     let listType = 'search';
     let list = '';
     let loop = 0;
-    
-    let currentState = this.state;
-    this.setState({ 
+    this.setState({
       videoid:videoid, listType:listType, list:list, loop: parseInt(loop,10), autoplay: 1
     })
   }

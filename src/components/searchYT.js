@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import searchYouTube from 'youtube-api-search';
 import PlayerYT from './playerYT';
-import styles from './styles/searchYT/searchYT.css';
 const key = 'AIzaSyC47z07dNmf28ZPt3MLOPGTuWm2zqpoLeg';
 
 
@@ -55,7 +54,7 @@ class searchYT extends Component {
 				<div className="wraperSong" key={key}>
 					<div className="songOption"  onClick={(e) => _this.player(val.id.videoId)}>
 						<div className="thumb">
-							<img src={val.snippet.thumbnails.high.url}  />
+							<img src={val.snippet.thumbnails.high.url} alt={val.id.videoId} />
 						</div>
 						<div className="title">{val.snippet.title}</div>
 						<div className="desc">{val.snippet.description}</div>

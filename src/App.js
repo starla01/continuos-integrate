@@ -1843,7 +1843,7 @@ class App extends Component {
         <header className="App-header">
             <div id="searchBar" className="searchBar">
             <div className="logo">
-                <img src="/images/logo.png" />
+                <img src="/images/logo.png" alt="Musik" />
             </div>
             <i className="material-icons icon">music_video</i>
               <input type="text" onChange={(e) => this.setTerm(e)} onKeyPress={(e) => this.findTerm(this.state.term)} placeholder="Busca artista o canción" />
