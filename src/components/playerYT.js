@@ -65,8 +65,8 @@ class PlayerYT extends Component {
           onPaused={this.onPaused}
           onPlayed={this.onPlayed}
           onReady={this.onReady}
-          width="850"
-          height="500" />
+          width={850}
+          height={500} />
       </div>
     );
   }
