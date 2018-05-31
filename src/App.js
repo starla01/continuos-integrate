@@ -1845,7 +1845,7 @@ class App extends Component {
             <div className="logo">
                 <img src="/images/logo.png" />
             </div>
-            <i class="material-icons icon">music_video</i>
+            <i className="material-icons icon">music_video</i>
               <input type="text" onChange={(e) => this.setTerm(e)} onKeyPress={(e) => this.findTerm(this.state.term)} placeholder="Busca artista o canción" />
             </div>
             <div className="alphabeth">
