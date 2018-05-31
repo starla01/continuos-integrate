@@ -53,25 +53,15 @@ class PlayerYT extends Component {
 	this.applyToPlayer();
   }
   render() {
-	  console.log("- VIDEO: - ", this.state.idVideo)
     return (
       <div className="App">
         <div>
-          {/* video_id : <input type="text" ref={(videoid)=> { this.videoid = videoid }} defaultValue={this.state.videoid} /><br />
-          listType : <input type="text" ref={(listType)=> { this.listType = listType }} defaultValue={this.state.listType} /><br />
-          list : <input type="text"  ref={(list)=> { this.list = list }} defaultValue={this.state.list}/><br />
-          loop : <input type="number"  ref={(loop)=> { this.loop = loop }} defaultValue={this.state.loop} /><br />
-          <button onClick={()=> { this.applyToPlayer() }}>Apply</button>
-          <button onClick={()=> { this.player.playVideo() }}>Play</button>
-          <button onClick={()=> { this.player.stopVideo() }}>Stop</button>
-          <button onClick={()=> { this.player.pauseVideo() }}>Pause</button> */}
         </div>
         <YoutubeReact ref={(player)=>{ this.player = player }} videoid={this.state.idVideo}
           listType={this.state.listType} list={this.state.list} autoplay={this.state.idVideo}
           onEnded={this.onEnded} onPaused={this.onPaused} 
           onPlayed={this.onPlayed} onReady={this.onReady}
-		  width={850}  height={500} />
-		  
+		      width={850}  height={500} />
       </div>
     );
   }
