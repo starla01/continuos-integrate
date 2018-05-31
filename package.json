@@ -5,7 +5,10 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "react-youtube-autocomplete": "^1.0.20",
+    "youtube-api-search": "0.0.5",
+    "youtube-player-react": "^0.1.7"
   },
   "scripts": {
     "start": "react-scripts start",

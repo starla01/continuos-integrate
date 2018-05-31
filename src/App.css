@@ -1,28 +1,102 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #331638;
+    height: 50px;
+    padding: 5px;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+}
+
+.App-header .searchBar {
+    width: 40%;
+    height: 100%;
+    float: left;
+    text-align: left;
+    padding-left: 200px;
+    box-sizing: border-box;
+}
+
+.App-header .searchBar .logo {
+    position: absolute;
+    left: 10px;
+    width: 170px;
+    top: 10px;
+}
+
+.App-header .searchBar .logo img {
+    width: 100%;
+}
+
+.App-header .searchBar input {
+    width: 100%;
+    height: 70%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 0px;
+    position: relative;
+    top: 8px;
+    border-style: none;
+    outline-style: none;
+    padding: 5px;
+    font-size: 16px;
+    padding-left: 38px;
+}
+
+.App-header .searchBar .icon {
+    position: absolute;
+    left: 212px;
+    z-index: 10;
+    color: gray;
+    font-size: 26px;
+    top: 18px;
+}
+
+.alphabeth {
+    text-align: center;
+    float: left;
+    height: 48px;
+    padding-left: 20px;
+}
+
+.alphabeth .letters {
+    float: left;
+    padding: 14px 8px;
+    box-sizing: border-box;
+    font-weight: 300;
+    cursor: pointer;
+    transition: 0.1s;
+    font-size: 17px;
+}
+
+.alphabeth .letters:hover {
+    transform: scale(1.3);
+    font-weight: 600;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
