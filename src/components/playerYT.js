@@ -55,11 +55,12 @@ class PlayerYT extends Component {
   render() {
     return (
       <div className="App">
-        <YoutubeReact ref={(player)=>{ this.player = player }} videoid={this.state.idVideo}
+      hello
+        {/* <YoutubeReact ref={(player)=>{ this.player = player }} videoid={this.state.idVideo}
           listType={this.state.listType} list={this.state.list} autoplay={this.state.idVideo}
           onEnded={this.onEnded} onPaused={this.onPaused} 
           onPlayed={this.onPlayed} onReady={this.onReady}
-		      width={850}  height={500} />
+		      width={850}  height={500} /> */}
       </div>
     );
   }
