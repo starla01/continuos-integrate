@@ -1834,9 +1834,7 @@ class App extends Component {
     })
     return L;
   }
-  componentDidMount(){
 
-  }
   render() {
     return (
       <div className="App">

@@ -80,7 +80,6 @@ class searchYT extends Component {
 				<i className="material-icons search">search</i>
 				<input type="text" className="filterInterpretes" placeholder="Filtrar"  />
 			</div>
-
       </div>
     );
   }
