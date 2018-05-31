@@ -61,7 +61,8 @@ class PlayerYT extends Component {
           listType={this.state.listType} list={this.state.list} autoplay={this.state.idVideo}
           onEnded={this.onEnded} onPaused={this.onPaused} 
           onPlayed={this.onPlayed} onReady={this.onReady}
-		      width={850}  height={500} />
+		  width={850}  height={500} />
+		  
       </div>
     );
   }

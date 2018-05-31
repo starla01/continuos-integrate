@@ -32,7 +32,6 @@ class searchYT extends Component {
 	}
 	player(id){
 		this.setState({idVideo: id})
-		console.log(id)
 	}
 	getListInterpretes(){
 		const _this = this;
