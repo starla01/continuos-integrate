@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import searchYouTube from 'youtube-api-search';
 import PlayerYT from './playerYT';
-const key = 'AIzaSyC47z07dNmf28ZPt3MLOPGTuWm2zqpoLeg';
+import style from './styles/searchYT/searchYT.css';
 
+const key = 'AIzaSyC47z07dNmf28ZPt3MLOPGTuWm2zqpoLeg';
 
 class searchYT extends Component {
 	constructor(props) {
@@ -49,7 +50,6 @@ class searchYT extends Component {
 		const list = this.state.list;
 		const _this = this;
 		var lista = list.map(function(val, key){
-			console.log(val)
 			return(
 				<div className="wraperSong" key={key}>
 					<div className="songOption"  onClick={(e) => _this.player(val.id.videoId)}>
