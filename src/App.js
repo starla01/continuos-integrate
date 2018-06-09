@@ -11,6 +11,7 @@ class App extends Component {
       letter: 'A',
       alphabet: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
       filtro: [],
+      searching: 'HHHH',
       interpretes: [
         "5 Second",
 "5 Seconds",
@@ -1837,6 +1838,10 @@ class App extends Component {
   componentDidMount(){
     this.findLetter('A')
   }
+  setFinder(text){
+    const search = text.replace(/undefined/g, '')
+    this.thiss.findTerm(search)
+  }
   render() {
     return (
       <div className="App">
@@ -1852,7 +1857,7 @@ class App extends Component {
               {this.getLetters()}
             </div>
         </header>
-        <SearchYT term={this.state.searchTerm} interpretes={this.state.filtro} />
+        <SearchYT term={this.state.searchTerm} interpretes={this.state.filtro} setFinder={this.setFinder} thiss={this} />
       </div>
     );
   }

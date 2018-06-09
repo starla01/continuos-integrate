@@ -4,7 +4,7 @@ import PlayerYT from './playerYT';
 import style from './styles/searchYT/searchYT.css';
 
 const key = 'AIzaSyC47z07dNmf28ZPt3MLOPGTuWm2zqpoLeg';
-
+let wording = '';
 class searchYT extends Component {
 	constructor(props) {
 		super(props);
@@ -21,6 +21,7 @@ class searchYT extends Component {
 	  }
 	componentDidMount(){
 		this.genParticipants();
+		this.initVoice();
 	}
 	createTypedName(e){
 		this.setState({typedName: e.target.value});
@@ -43,7 +44,7 @@ class searchYT extends Component {
 			this.setState({list: videos})
 		});
 	}
-
+	
 	shouldComponentUpdate(nextProps, nextState){
 		if(this.props.term !== nextProps.term){
 			this.findList(nextProps.term)
@@ -73,7 +74,7 @@ class searchYT extends Component {
 		const _this = this;
 		const POINTS = Math.random() * (10 - 5) + 5;
 			for(var i = 0; i <= this.state.users.length-1; i++){
-					if(i == this.state.standByParticipant){
+					if(i === this.state.standByParticipant){
 						const c = this.state.users[i].calificacion;
 						c.push(Math.floor(POINTS));
 						_this.setState({calificacion: c});
@@ -136,8 +137,60 @@ class searchYT extends Component {
 		})
 		return lista;
 	}
+	initVoice(){
+		var _this = this;
+		this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+		this.recognition = new this.SpeechRecognition();
+		this.recognition.lang = 'ES-MX';
+		this.recognition.continuos = false;
+		this.recognition.interimResults = true;
+		this.recognition.start();
+		this.recognition.onresult = function(event){
+			for(var i = event.resultIndex; i < event.results.length; i++){
+				if(event.results[i].isFinal){
+					if(event.results[i].isFinal){ _this.wording = event.results[i][0].transcript }
+				}
+			}
+		}
+		this.recognition.onstart = function(){}
+		this.recognition.onerror = function(){}
+		this.recognition.onend = function(){
+			if(_this.wording ==! undefined || _this.wording !== ''){
+				_this.cleanText(_this.wording)
+				_this.wording = '';
+			}
+			_this.initVoice();
+		}
+	}
+	cleanText(text){
+			const _this = this;
+			const arrWords = text ? text.split(' ') : '';
+			const trigger = arrWords[0];
+			const finder = arrWords[1] + ' ' + arrWords[2] + ' ' + arrWords[3] + ' ' + arrWords[4]
+
+
+			console.log(trigger);
+			if(trigger === 'busca' || trigger === "Busca" || trigger === "Buscar" || trigger === "buscar"){
+				this.props.setFinder(finder, this.props.thiss)
+				const newFinder = finder.replace(/undefined/g, '');
+				this.speaker("Buscando " + newFinder)
+			}
+		//this.speaker(text);
+	}
+	speaker(string){
+		var msg = new SpeechSynthesisUtterance();
+		msg.text = string;
+		msg.volume = parseFloat(1);
+		msg.rate = parseFloat(0.9);
+		msg.pitch = parseFloat(1.3);
+		var voice = 'Google expañol de México';
+		if(voice) {
+			msg.voice = speechSynthesis.getVoices().filter(function(){ return voice.name === voice; })[0]; 
+		}
+		window.speechSynthesis.speak(msg);
+	}
   render() {
-		console.log(this.state.users)
+		console.log(this.state.typedName)
     return (
       <div className="youtubeSearch" >
 			<div className="player">
