@@ -12,10 +12,31 @@ class searchYT extends Component {
 			newTerm: '',
 			 list: [],
 			 idVideo: '',
-			 newList: []
+			 newList: [],
+			 title: '',
+			 users: [],
+			 typedName: '',
+			 standByParticipant: 0
 		};
 	  }
 	componentDidMount(){
+		this.genParticipants();
+	}
+	createTypedName(e){
+		this.setState({typedName: e.target.value});
+	}
+	AddParticipant(){
+		const participant = {};
+		const users = this.state.users;
+		participant.nombre = '';
+			participant.nombre = this.state.typedName;
+			participant.points = 0;
+			participant.calificacion = [];
+		if(participant.nombre !== ''){
+			users.push(participant);
+			this.setState({users: users});
+		}
+
 	}
 	findList(string){
 		searchYouTube({key: key, term: string + ' KARAOKE', maxResults: 50}, (videos) => {
@@ -31,20 +52,71 @@ class searchYT extends Component {
 			return true;
 		}
 	}
-	player(id){
-		this.setState({idVideo: id})
+	player(id, title){
+		this.setState({idVideo: id, title: title})
 	}
 	getListInterpretes(){
 		const _this = this;
 		const int = this.props.interpretes.map(function(val, key){
 			return (
 				<div className="interprete" key={key} onClick={(e) => _this.findList(val)}>
-					<i className="material-icons icon">adjust</i><span className="name">{val}</span><span></span>
+					<i className="material-icons icon">queue_music</i><span className="name">{val}</span><span></span>
 				</div>
 			)
 		})
-
 		return int;
+	}
+	selectParticipant(e, id){
+		this.setState({standByParticipant: id})
+	}
+	asignPoint(){
+		const _this = this;
+		const POINTS = Math.random() * (10 - 5) + 5;
+			for(var i = 0; i <= this.state.users.length-1; i++){
+					if(i == this.state.standByParticipant){
+						const c = this.state.users[i].calificacion;
+						c.push(Math.floor(POINTS));
+						_this.setState({calificacion: c});
+						_this.getPoints(i);
+					}
+			}
+	}
+	getPoints(index){
+		const _this = this;
+		for(var i = 0; i <= this.state.users.length-1; i++){
+
+				console.log(_this.state.users[i].calificacion.length)
+			 if(_this.state.users[i].calificacion.length){
+				const reducer = (accumulator, currentValue) => accumulator + currentValue;
+				const cal = (_this.state.users[i].calificacion.reduce(reducer) / _this.state.users[i].calificacion.length);
+				const c = this.state.users[i];
+				if(i === index){
+					c.points = cal;
+					_this.setState({points: c});
+				}
+			 }
+		}
+	}
+	getStars(points){
+
+	}
+	genParticipants(){
+		const _this = this;
+
+		const list = this.state.users.map(function(val, key){
+				return (
+					<div  key={key} className={key === _this.state.standByParticipant ? "more participant active" : "more participant"} onClick={(e) =>_this.selectParticipant(e, key)}>
+					<i className="material-icons califica" onClick={() => _this.asignPoint()}>cached</i>
+					<i className="material-icons icon">account_circle</i><br />
+					<span className="text">{val.nombre}</span>
+					<div className="calificacion">
+						{_this.getStars(val.points)}
+						<br /> <span className="points">{Math.floor(val.points)}</span>
+					</div>
+				</div>
+				)
+		})
+		return list;
 	}
 	createList(){
 		const list = this.state.list;
@@ -52,7 +124,7 @@ class searchYT extends Component {
 		var lista = list.map(function(val, key){
 			return(
 				<div className="wraperSong" key={key}>
-					<div className="songOption"  onClick={(e) => _this.player(val.id.videoId)}>
+					<div className="songOption"  onClick={(e) => _this.player(val.id.videoId, val.snippet.title)}>
 						<div className="thumb">
 							<img src={val.snippet.thumbnails.high.url} alt={val.id.videoId} />
 						</div>
@@ -65,14 +137,48 @@ class searchYT extends Component {
 		return lista;
 	}
   render() {
-
+		console.log(this.state.users)
     return (
       <div className="youtubeSearch" >
 			<div className="player">
-				{this.createList()}
+				{ this.state.list.length ? this.createList() : <div className="empty">Selecciona un letra de la A a la Z o búsca una canción o artista desde el buscador para encontrar videos de <span>Karaoke.</span></div>}
 			</div>
 			<div className="list">
-				<PlayerYT idVideo={this.state.idVideo} width="100%" />
+				<PlayerYT idVideo={this.state.idVideo} titleVideo={this.state.title} width={50} />
+				<div className="voice">
+					<div className="boxIA">
+						<div id="s1" className="shape">
+							<img src="images/IAMOM.png" />
+						</div>
+						<div id="s2" className="shape">
+							<img src="../images/IAMOM.png" />
+						</div>
+						<div id="s3" className="shape">
+							<img src="/images/IAMOM.png" />
+						</div>
+						<div id="s4" className="shape">
+							<img src="/images/IAMOM2.png" />
+						</div>
+						<div id="s5" className="shape">
+							<img src="/images/IAMOM2.png" />
+						</div>
+					</div>
+				</div>
+				{/* <div className="participants">
+						<div className='message' >Para tener una mejor experiencia de competencia agrega participantes a la lista,<br />Para poder asignar Calificacion seleccionar participante antes de iniciar a cantar</div>
+						<div className="addUser">
+							<input type="user" placeholder="Nombre del participante" onChange={(e) => this.createTypedName(e)} />
+							<i className="material-icons icon" onClick={() => this.AddParticipant()}>send</i>
+						</div>
+						<div className="listParticipantes">
+								<div className="more">
+									<i className="material-icons icon">accessibility</i><br />
+									<span className="text">Agregar</span>
+								</div>
+								{ this.genParticipants() }
+						</div>
+				</div>
+				<div className=""></div> */}
 			</div>
 
 			<div className="interpretes">

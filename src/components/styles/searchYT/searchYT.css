@@ -1,139 +1,440 @@
-.youtubeSearch {
-    width: 100%;
-    position: absolute;
-    padding-left: 400px;
-    padding-right: 250px;
-    height: 100%;
-    box-sizing: border-box;
-    background-color: #e9ebee;
-    padding-top: 60px;
-    overflow: hidden;
-}
-
-.youtubeSearch .interpretes {
-    position: absolute;
-    right: 0;
-    top: 0;
-    box-sizing: border-box;
-    text-align: left;
-    width: 250px;
-    padding-top: 60px;
-    overflow-y: scroll;
-    padding-bottom: 50px;
-    height: 100%;
-}
-
-.youtubeSearch .interpretes .search {
-    position: fixed;
-    bottom: 7px;
-    right: 225px;
-    z-index: 10;
-    font-size: 20px;
-}
-
-.youtubeSearch .interpretes .filterInterpretes {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 30px;
-    padding: 3px 3px 3px 30px;
-    font-size: 14px;
-    border-style: none;
-    outline-style: none;
-}
-
-.youtubeSearch .interpretes .interprete {
-    box-sizing: border-box;
-    cursor: pointer;
-    padding: 5px 0;
-}
-
-.youtubeSearch .interpretes .interprete:hover {
-    background-color: #dddfe2;
-}
-
-.youtubeSearch .interpretes .interprete .icon {
-    margin-left: 10px;
-    position: relative;
-    top: 3px;
-}
-
-.youtubeSearch .interpretes .interprete .name {
-    position: relative;
-    top: -3px;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    margin-left: 10px;
-}
-
-.player {
-    position: absolute;
-    left: 0;
-    width: 400px;
-    height: 100%;
-    overflow-y: scroll;
-}
-
-.list {
-    padding: 20px;
-    height: 100%;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-}
-
-.player .wraperSong {
-    padding: 5px;
-    box-sizing: border-box;
-    float: left;
-    width: 100%;
-}
-
-.player .wraperSong .songOption {
-    border: 1px solid #dcdcdc;
-    padding: 3px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    overflow: auto;
-    cursor: pointer;
-    text-align: left;
-}
-
-.player .wraperSong .songOption:hover {
-    background-color: #dcdcdc;
-}
-
-.player .songOption .thumb {
-    width: 100%;
-    float: left;
-    padding: 0px;
-    box-sizing: border-box;
-    width: 150px;
-    height: 110px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-}
-
-.player .songOption .title {
-    padding: 5px 5px 0 165px;
-    box-sizing: border-box;
-    text-align: left;
-    font-size: 14px;
-    font-family: sans-serif;
-    font-weight: 400;
-}
-
-.player .songOption .desc {
-    padding: 5px 5px 0 165px;
-    box-sizing: border-box;
-    text-align: left;
-    font-size: 10px;
-    font-family: sans-serif;
-    font-weight: 400;
-    color: gray;
-}
-
-.player .songOption .thumb img {
-    width: 101%;
-}
+        .youtubeSearch {
+            width: 100%;
+            position: absolute;
+            padding-left: 400px;
+            padding-right: 250px;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: #000000;
+            padding-top: 60px;
+            overflow: hidden;
+        }
+        
+        .youtubeSearch .interpretes {
+            position: absolute;
+            right: 0;
+            top: 0;
+            box-sizing: border-box;
+            text-align: left;
+            width: 250px;
+            padding-top: 60px;
+            overflow-y: scroll;
+            padding-bottom: 50px;
+            height: 100%;
+            background-color: #252525;
+            transition: 0.3s;
+        }
+        
+        .youtubeSearch .interpretes .search {
+            position: fixed;
+            bottom: 7px;
+            right: 220px;
+            z-index: 10;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .youtubeSearch .interpretes .filterInterpretes {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            padding: 3px 3px 3px 34px;
+            font-size: 14px;
+            border-style: none;
+            outline-style: none;
+            background-color: #383838;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .youtubeSearch .interpretes .interprete {
+            box-sizing: border-box;
+            cursor: pointer;
+            padding: 5px 0;
+            color: white;
+        }
+        
+        .youtubeSearch .interpretes .interprete:hover {
+            background-color: #dddfe2;
+            color: #252525;
+        }
+        
+        .youtubeSearch .interpretes .interprete .icon {
+            margin-left: 10px;
+            position: relative;
+            top: 3px;
+        }
+        
+        .youtubeSearch .interpretes .interprete .name {
+            position: relative;
+            top: -3px;
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-left: 10px;
+        }
+        
+        .player {
+            position: absolute;
+            left: 0;
+            width: 400px;
+            height: 100%;
+            overflow-y: scroll;
+            transition: 0.3s;
+        }
+        
+        .empty {
+            color: white;
+            padding: 200px 30px;
+            font-weight: 300;
+            position: relative;
+            top: 0px;
+            background-color: rgb(29, 29, 29);
+            height: 100%;
+        }
+        
+        .empty span {
+            font-weight: 600;
+        }
+        
+        #s1 {
+            transform: rotate(0deg);
+            animation: rotate 6s ease infinite;
+        }
+        
+        #s2 {
+            transform: rotate(10deg);
+            animation: rotateI 12s ease infinite;
+        }
+        
+        #s3 {
+            transform: rotate(20deg);
+            animation: rotate 18s ease infinite;
+        }
+        
+        #s4 {
+            transform: rotate(20deg);
+            animation: rotateI 24s ease infinite;
+        }
+        
+        #s5 {
+            transform: rotate(20deg);
+            animation: rotate 30s ease infinite;
+        }
+        
+        .shape {
+            position: absolute;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            bottom: 150px;
+            left: 50%;
+            margin-left: -75px;
+        }
+        
+        .shape img {
+            width: 100%;
+        }
+        
+        #boxIA {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+        
+        #boxIA2 {
+            position: absolute;
+            left: 50px;
+            top: 400px;
+        }
+        
+        .animation {
+            animation-name: rotate;
+            animation-duration: 99s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        
+        .list {
+            padding: 20px;
+            height: 100%;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            position: relative;
+        }
+        
+        .player .wraperSong {
+            padding: 5px;
+            box-sizing: border-box;
+            float: left;
+            width: 100%;
+        }
+        
+        .player .wraperSong .songOption {
+            border: 1px solid #2f2f2f;
+            padding: 3px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            overflow: auto;
+            cursor: pointer;
+            text-align: left;
+        }
+        
+        .player .wraperSong .songOption:hover {
+            background-color: #151515;
+        }
+        
+        .player .songOption .thumb {
+            width: 100%;
+            float: left;
+            padding: 0px;
+            box-sizing: border-box;
+            width: 150px;
+            height: 110px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .player .songOption .title {
+            padding: 5px 5px 0 165px;
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: 400;
+            color: white;
+        }
+        
+        .player .songOption .desc {
+            padding: 5px 5px 0 165px;
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 10px;
+            font-family: sans-serif;
+            font-weight: 400;
+            color: gray;
+        }
+        
+        .player .songOption .thumb img {
+            width: 101%;
+        }
+        
+        .participants {
+            position: absolute;
+            bottom: 66px;
+            width: 95%;
+            border: 1.5px dashed #696969;
+            height: 330px;
+            margin-left: 10px;
+            border-radius: 3px;
+            background-color: rgb(16, 16, 16);
+        }
+        
+        .participants .message {
+            color: #9a9a9a;
+            padding: 10px;
+            box-sizing: border-box;
+            line-height: 24px;
+        }
+        
+        .addUser {
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .addUser input {
+            width: 50%;
+            height: 40px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 2px;
+            border: 0px;
+            position: relative;
+            top: 12px;
+            border-style: none;
+            outline-style: none;
+            padding: 5px;
+            font-size: 15px;
+            padding-left: 38px;
+            font-weight: 300;
+            color: #2f2f2f
+        }
+        
+        .addUser .icon {
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            position: relative;
+            left: 10px;
+            top: 23px;
+        }
+        
+        .addUser .icon:hover {
+            color: #4267b2;
+        }
+        
+        .participants .listParticipantes {
+            width: 100%;
+            height: auto;
+            position: relative;
+            padding: 40px 30px;
+            box-sizing: border-box;
+            float: left;
+        }
+        
+        .participants .listParticipantes .more {
+            width: 140px;
+            height: 180px;
+            border-radius: 6px;
+            border: 1px solid gray;
+            float: left;
+            cursor: pointer;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .participants .listParticipantes .more.participant:hover {
+            border: 1px solid white;
+        }
+        
+        .participants .listParticipantes .more.participant.active {
+            background-color: white;
+        }
+        
+        .participants .listParticipantes .more.participant.active>.text {
+            color: black;
+        }
+        
+        .participants .listParticipantes .more.participant.active>.icon {
+            color: black;
+        }
+        
+        .participants .listParticipantes .more.participant.active>.calificacion .points {
+            color: black;
+        }
+        
+        .participants .listParticipantes .more.participant.active>.califica {
+            color: #000000;
+        }
+        
+        .participants .listParticipantes .more.participant .icon {
+            color: #fff;
+            top: 20px;
+            font-size: 70px;
+        }
+        
+        .participants .listParticipantes .more.participant {
+            position: relative;
+        }
+        
+        .participants .listParticipantes .more.participant .califica {
+            color: white;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+        
+        .participants .listParticipantes .more.participant .text {
+            top: 22px;
+        }
+        
+        .participants .listParticipantes .more.participant .calificacion {
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            bottom: 40px;
+            z-index: 12;
+        }
+        
+        .participants .listParticipantes .more.participant .calificacion .star {
+            font-size: 21px;
+            color: #d4b310;
+        }
+        
+        .participants .listParticipantes .more.participant .calificacion .points {
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        
+        .participants .listParticipantes .more .icon {
+            color: #9a9a9a;
+            font-size: 80px;
+            position: relative;
+            top: 30px;
+        }
+        
+        .participants .listParticipantes .more .text {
+            position: relative;
+            top: 36px;
+            color: #9a9a9a;
+        }
+        
+        @keyframes rotate {
+            25% {
+                transform: rotate(90deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            75% {
+                transform: rotate(270deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes rotateI {
+            25% {
+                transform: rotate(-90deg);
+            }
+            50% {
+                transform: rotate(-180deg);
+            }
+            75% {
+                transform: rotate(-270deg);
+            }
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+        
+        @media screen and (max-width: 1000px) {
+            .alphabeth {
+                width: 100%;
+                padding-left: 0;
+            }
+            .alphabeth .letters {
+                width: 3.7%;
+            }
+            .App-header {
+                height: 80px;
+            }
+            #searchBar {
+                width: 95%;
+                height: 50%;
+            }
+            #searchBar input {
+                height: 30px;
+            }
+            .player {
+                left: -400px;
+            }
+            .interpretes {
+                right: -250px!important;
+            }
+            .youtubeSearch {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        /* On screens that are 600px or less, set the background color to olive */
+        
+        @media screen and (max-width: 600px) {}

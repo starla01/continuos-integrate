@@ -8,6 +8,7 @@
     "react-player": "^1.6.2",
     "react-scripts": "1.1.1",
     "react-youtube-autocomplete": "^1.0.20",
+    "react-youtube-player": "^2.0.1",
     "youtube-api-search": "0.0.5",
     "youtube-player-react": "^0.1.7"
   },

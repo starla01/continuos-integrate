@@ -1823,18 +1823,20 @@ class App extends Component {
   }
   findLetter(letter){
     const result = this.state.interpretes.filter(word => word.charAt(0).toLowerCase() === letter.toLowerCase());
-    this.setState({filtro: result});
+    this.setState({filtro: result, letter: letter});
   }
   getLetters(){
     const _this = this;
     var L = this.state.alphabet.map(function(val, key){
       return (
-          <div key={key} className="letters" onClick={(e) => _this.findLetter(val)}>{val}</div>
+          <div key={key} className={val === _this.state.letter ? "letters active" : "letters"} onClick={(e) => _this.findLetter(val)}>{val}</div>
       )
     })
     return L;
   }
-
+  componentDidMount(){
+    this.findLetter('A')
+  }
   render() {
     return (
       <div className="App">
@@ -1844,7 +1846,7 @@ class App extends Component {
                 <img src="/images/logo.png" alt="Musik" />
             </div>
             <i className="material-icons icon">music_video</i>
-              <input type="text" onChange={(e) => this.setTerm(e)} onKeyPress={(e) => this.findTerm(this.state.term)} placeholder="Busca artista o canción" />
+              <input type="text" onChange={(e) => this.setTerm(e)} onKeyUp={(e) => this.findTerm(this.state.term)} placeholder="Busca artista o canción" />
             </div>
             <div className="alphabeth">
               {this.getLetters()}
