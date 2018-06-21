@@ -147,7 +147,6 @@ class searchYT extends Component {
 		this.recognition.start();
 		
 		this.recognition.onresult = function(event){
-			alert(event.resultIndex)
 			for(var i = event.resultIndex; i < event.results.length; i++){
 				if(event.results[i].isFinal){
 					if(event.results[i].isFinal){ _this.wording = event.results[i][0].transcript }
