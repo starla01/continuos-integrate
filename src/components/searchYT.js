@@ -142,8 +142,8 @@ class searchYT extends Component {
 		this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition || window.oSpeechRecognition;
 		this.recognition = new this.SpeechRecognition();
 		this.recognition.lang = 'ES-MX';
-		this.recognition.continuos = true;
-		this.recognition.interimResults = true;
+		this.recognition.continuos = false;
+		this.recognition.interimResults = false;
 		this.recognition.start();
 		
 		this.recognition.onresult = function(event){
@@ -186,7 +186,7 @@ class searchYT extends Component {
 		msg.text = string;
 		msg.volume = parseFloat(1);
 		msg.rate = parseFloat(0.9);
-		msg.pitch = parseFloat(1.3);
+		msg.pitch = parseFloat(1);
 		var voice = 'Google expañol de México';
 		if(voice) {
 			msg.voice = speechSynthesis.getVoices().filter(function(){ return voice.name === voice; })[0]; 
