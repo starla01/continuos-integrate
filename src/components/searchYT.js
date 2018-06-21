@@ -155,9 +155,7 @@ class searchYT extends Component {
 			}
 		}
 		this.recognition.onstart = function(){}
-		this.recognition.onerror = function(event){
-			alert(event.error)
-		}
+		this.recognition.onerror = function(){}
 		this.recognition.onend = function(){
 			if(_this.wording ==! undefined || _this.wording !== ''){
 				_this.cleanText(_this.wording)
