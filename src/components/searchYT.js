@@ -142,7 +142,7 @@ class searchYT extends Component {
 		this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition || window.oSpeechRecognition;
 		this.recognition = new this.SpeechRecognition();
 		this.recognition.lang = 'ES-MX';
-		this.recognition.continuos = false;
+		this.recognition.continuos = true;
 		this.recognition.interimResults = true;
 		this.recognition.start();
 		
