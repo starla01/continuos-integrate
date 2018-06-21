@@ -139,13 +139,15 @@ class searchYT extends Component {
 	}
 	initVoice(){
 		var _this = this;
-		this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+		this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition || window.oSpeechRecognition;
 		this.recognition = new this.SpeechRecognition();
 		this.recognition.lang = 'ES-MX';
 		this.recognition.continuos = false;
 		this.recognition.interimResults = true;
 		this.recognition.start();
+		
 		this.recognition.onresult = function(event){
+			alert(event.resultIndex)
 			for(var i = event.resultIndex; i < event.results.length; i++){
 				if(event.results[i].isFinal){
 					if(event.results[i].isFinal){ _this.wording = event.results[i][0].transcript }
@@ -153,7 +155,9 @@ class searchYT extends Component {
 			}
 		}
 		this.recognition.onstart = function(){}
-		this.recognition.onerror = function(){}
+		this.recognition.onerror = function(event){
+			alert(event.error)
+		}
 		this.recognition.onend = function(){
 			if(_this.wording ==! undefined || _this.wording !== ''){
 				_this.cleanText(_this.wording)
