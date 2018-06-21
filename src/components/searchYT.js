@@ -164,6 +164,7 @@ class searchYT extends Component {
 		}
 	}
 	cleanText(text){
+		console.log(text);
 			const _this = this;
 			const arrWords = text ? text.split(' ') : '';
 			const trigger = arrWords[0];
